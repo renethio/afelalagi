@@ -1,0 +1,22 @@
+<section>
+  <div class="page-header">
+    <h1>Akerays</h1>
+  </div>
+  <div class="list-group">
+    <a ng-repeat="akeray in vm.akerays"
+       ui-sref="akerays.view({ akerayId: akeray._id })"
+       class="list-group-item">
+      <small class="list-group-item-text">
+        Posted on
+        <span ng-bind="akeray.created | date:'mediumDate'"></span>
+        by
+        <span ng-if="akeray.user" ng-bind="akeray.user.displayName"></span>
+        <span ng-if="!akeray.user">Deleted User</span>
+      </small>
+      <h4 class="list-group-item-heading" ng-bind="akeray.name"></h4>
+    </a>
+  </div>
+  <div class="alert alert-warning text-center" ng-if="vm.akerays.$resolved && !vm.akerays.length">
+    No Akerays yet, why don't you <a ui-sref="akerays.create">create one</a>?
+  </div>
+</section>

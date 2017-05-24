@@ -1,0 +1,26 @@
+<section>
+  <div class="page-header">
+    <h1 ng-bind="vm.tekeray.name"></h1>
+  </div>
+  <div class="pull-right"
+       ng-show="vm.tekeray.isCurrentUserOwner">
+    <a class="btn btn-primary"
+       ui-sref="tekerays.edit({ tekerayId: vm.tekeray._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="vm.tekeray.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.tekeray.user"
+            ng-bind="vm.tekeray.user.displayName"></span>
+      <span ng-if="!vm.tekeray.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.tekeray.content"></p>
+</section>
